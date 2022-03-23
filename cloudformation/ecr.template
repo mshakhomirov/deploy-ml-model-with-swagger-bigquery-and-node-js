@@ -1,0 +1,48 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Parameters": {
+    "YourModule": {
+      "Description": "YourService name",
+      "Type": "String",
+      "Default": "connect",
+      "MinLength":"1",
+      "ConstraintDescription": "You must specify a name.",
+      "AllowedPattern": "(?:[a-z0-9]+(?:[._-][a-z0-9]+)*/)*[a-z0-9]+(?:[._-][a-z0-9]+)*"
+    }
+
+  },
+  "Resources": {
+    "ECRDockerRepository": {
+      "Type": "AWS::ECR::Repository",
+      "Properties": {
+        "RepositoryName" : {"Ref":"YourModule"},
+        "RepositoryPolicyText" : {
+          "Version": "2008-10-17",
+          "Statement": [
+            {
+              "Sid": "AllowPushPull",
+              "Effect": "Allow",
+              "Principal":   "*",
+              "Action": [
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:BatchGetImage",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:PutImage",
+                "ecr:InitiateLayerUpload",
+                "ecr:UploadLayerPart",
+                "ecr:CompleteLayerUpload"
+              ]
+            }
+          ]
+          }
+        }
+    }
+  },
+  "Outputs": {
+    "ecscluster": {
+      "Value": {
+        "Ref": "ECRDockerRepository"
+      }
+    }
+  }
+}

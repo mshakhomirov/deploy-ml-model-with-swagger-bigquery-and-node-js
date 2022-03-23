@@ -1,0 +1,29 @@
+[   {
+      "ParameterValue": "ml-service",
+      "ParameterKey": "ServiceName"
+    },
+    {
+      "ParameterValue": "subnet-1,subnet-2,subnet-3",
+      "ParameterKey": "SubnetId"
+    },
+    {
+      "ParameterValue": "vpc-1",
+      "ParameterKey": "VpcId"
+    },
+    {
+      "ParameterValue": "DEBUG",
+      "ParameterKey": "LogLevel"
+    },
+    {
+      "ParameterValue": "staging",
+      "ParameterKey": "Environment"
+    },
+    {
+      "ParameterValue": "2",
+      "ParameterKey": "MaxSize"
+    },
+    {
+      "ParameterKey": "DesiredCapacity",
+      "ParameterValue": "1"
+    }
+  ]
